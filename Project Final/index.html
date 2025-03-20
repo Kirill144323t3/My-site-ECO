@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ЭкоЧеллендж - Прогресс</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://unpkg.com/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+  <style>
+    body { background: linear-gradient(135deg, #e6f7fa, #f0f9ff); }
+    .progress-bar { transition: width 0.5s ease-in-out; }
+    .tab-btn { transition: all 0.3s ease; }
+    .tab-btn.active { background: #10b981; color: white; }
+    .eco-rank, .rank-progress, .completed-quests { 
+      background: white; 
+      border-radius: 16px; 
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05); 
+      border: none; 
+    }
+    .quest-item { transition: transform 0.2s ease; }
+    .quest-item:hover { transform: translateY(-2px); }
+  </style>
+</head>
+<body>
+  <div class="background">
+    <div class="bg-gradient"></div>
+    <div class="circle circle-1"></div>
+    <div class="circle circle-2"></div>
+    <div class="grid-pattern"></div>
+  </div>
+
+  <header class="relative z-10 py-4 px-4 flex items-center justify-between border-b bg-white/80 backdrop-blur-sm">
+    <div class="flex items-center space-x-2">
+      <i class="text-green-600" data-lucide="leaf"></i>
+      <h1 class="text-xl font-medium">ЭкоЧеллендж</h1>
+    </div>
+    <nav class="hidden md:flex items-center space-x-1">
+      <a href="challenges.html" class="nav-btn"><i data-lucide="leaf"></i><span>Вызовы</span></a>
+      <a href="ranks.html" class="nav-btn"><i data-lucide="award"></i><span>Ранги</span></a>
+      <a href="transport.html" class="nav-btn"><i data-lucide="car"></i><span>Транспорт</span></a>
+      <a href="index.html" class="nav-btn active"><i data-lucide="bar-chart"></i><span>Прогресс</span></a>
+      <a href="profile.html" class="nav-btn"><i data-lucide="user"></i><span>Профиль</span></a>
+    </nav>
+    <div class="md:hidden">
+      <button class="p-2 rounded-lg bg-gray-100" id="mobile-menu-btn">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="18" x2="20" y2="18"/></svg>
+      </button>
+    </div>
+  </header>
+  
+  <main class="flex-1 relative z-10 px-4 pb-16 pt-6">
+    <div class="max-w-5xl mx-auto">
+      <section class="mb-8">
+        <h2 class="text-2xl font-bold mb-6 text-gray-800">Ваш прогресс</h2>
+        
+        <!-- Текущий ранг -->
+        <div class="eco-rank p-5 rounded-xl mb-6">
+          <div class="flex items-center justify-between mb-4">
+            <div class="flex items-center">
+              <div class="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center mr-3">
+                <i class="text-green-700 w-5 h-5" data-lucide="award"></i>
+              </div>
+              <div>
+                <h3 class="text-lg font-semibold text-gray-800" id="current-rank">Эко-энтузиаст</h3>
+                <div class="flex items-center text-sm text-gray-500">
+                  <span id="current-level">Уровень 2</span>
+                  <span class="mx-2">•</span>
+                  <span id="current-xp">450 XP</span>
+                </div>
+              </div>
+            </div>
+            <span class="text-sm text-green-600 font-medium flex items-center">
+              <i class="w-4 h-4 mr-1" data-lucide="trending-up"></i>
+              <span id="xp-today">+120 XP сегодня</span>
+            </span>
+          </div>
+          <div class="progress-container">
+            <div class="flex justify-between text-sm text-gray-600 mb-2">
+              <span>До <span id="next-rank">Эко-Активист</span></span>
+              <span id="progress-text">450/1000</span>
+            </div>
+            <div class="w-full h-2 bg-gray-200 rounded-full overflow-hidden">
+              <div class="h-2 progress-bar" style="width: 45%; background: #10b981;"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Общий прогресс через 5 рангов -->
+        <div class="rank-progress p-5 rounded-xl mb-6">
+          <h3 class="text-lg font-semibold text-gray-800 mb-4">Путь к Эко-Легенде</h3>
+          <div class="space-y-3">
+            <div class="flex justify-between text-sm text-gray-600">
+              <span>Эко-Новичок (0 XP)</span>
+              <span>Эко-Легенда (5000 XP)</span>
+            </div>
+            <div class="w-full h-2 bg-gray-200 rounded-full relative">
+              <div class="h-2 rounded-full" id="total-progress-bar" style="width: 9%; background: #10b981; transition: width 0.5s ease;"></div>
+            </div>
+            <div class="flex justify-between text-xs text-gray-500">
+              <span>0</span>
+              <span>1k</span>
+              <span>2k</span>
+              <span>3k</span>
+              <span>4k</span>
+              <span>5k</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Выполненные квесты -->
+        <div class="completed-quests p-5 rounded-xl">
+          <h3 class="text-lg font-semibold text-gray-800 mb-4">Выполненные квесты</h3>
+          <div class="flex space-x-3 mb-4">
+            <button class="tab-btn px-4 py-2 rounded-lg bg-gray-100 text-gray-700 font-medium active" data-tab="daily-quests">Ежедневные</button>
+            <button class="tab-btn px-4 py-2 rounded-lg bg-gray-100 text-gray-700 font-medium" data-tab="weekly-quests">Еженедельные</button>
+          </div>
+          <div id="daily-quests" class="tab-content transition-opacity duration-300">
+            <ul class="space-y-3" id="daily-quests-list"></ul>
+          </div>
+          <div id="weekly-quests" class="tab-content hidden transition-opacity duration-300">
+            <ul class="space-y-3" id="weekly-quests-list"></ul>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+  
+  <script src="script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      lucide.createIcons();
+      setTimeout(() => lucide.createIcons(), 100);
+
+      setupMobileMenu();
+      setupTabs();
+      updateProgressAndRanks();
+      updateCompletedQuests();
+    });
+
+    function setupMobileMenu() {
+      const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+      const mobileMenu = document.getElementById('mobile-menu');
+      const closeMobileMenuBtn = document.getElementById('close-mobile-menu');
+
+      if (mobileMenuBtn && mobileMenu && closeMobileMenuBtn) {
+        mobileMenuBtn.addEventListener('click', () => {
+          mobileMenu.classList.remove('-translate-x-full');
+          mobileMenu.classList.add('translate-x-0');
+        });
+
+        closeMobileMenuBtn.addEventListener('click', () => {
+          mobileMenu.classList.remove('translate-x-0');
+          mobileMenu.classList.add('-translate-x-full');
+        });
+      }
+    }
+
+    function setupTabs() {
+      const tabButtons = document.querySelectorAll('.tab-btn');
+      const tabContents = document.querySelectorAll('.tab-content');
+
+      tabButtons.forEach(button => {
+        button.addEventListener('click', () => {
+          tabButtons.forEach(btn => btn.classList.remove('active'));
+          button.classList.add('active');
+
+          tabContents.forEach(content => {
+            content.classList.add('hidden');
+            content.style.opacity = '0';
+          });
+          const tabId = button.getAttribute('data-tab');
+          const activeTab = document.getElementById(tabId);
+          if (activeTab) {
+            activeTab.classList.remove('hidden');
+            setTimeout(() => (activeTab.style.opacity = '1'), 50);
+          }
+        });
+      });
+    }
+
+    function updateProgressAndRanks() {
+      const ranks = [
+        { name: "Эко-Новичок", xp: 0 },
+        { name: "Эко-энтузиаст", xp: 1000 },
+        { name: "Эко-Активист", xp: 2000 },
+        { name: "Эко-Герой", xp: 3500 },
+        { name: "Эко-Легенда", xp: 5000 }
+      ];
+
+      const savedXP = parseInt(localStorage.getItem('userXP')) || 0;
+      let currentRankIndex = ranks.findIndex(rank => savedXP < rank.xp);
+      if (currentRankIndex === -1) currentRankIndex = ranks.length - 1;
+      const currentRank = ranks[currentRankIndex - 1] || ranks[0];
+      const nextRank = ranks[currentRankIndex] || ranks[ranks.length - 1];
+      const xpToNext = nextRank.xp - currentRank.xp;
+      const xpProgress = savedXP - currentRank.xp;
+      const progressPercentage = xpToNext > 0 ? (xpProgress / xpToNext) * 100 : 100;
+      const totalProgressPercentage = (savedXP / 5000) * 100;
+
+      // Обновляем текущий ранг
+      document.getElementById('current-rank').textContent = currentRank.name;
+      document.getElementById('current-level').textContent = `Уровень ${currentRankIndex + 1}`;
+      document.getElementById('current-xp').textContent = `${savedXP} XP`;
+      document.getElementById('next-rank').textContent = nextRank.name;
+      document.getElementById('progress-text').textContent = `${xpProgress}/${xpToNext}`;
+      document.querySelector('.progress-bar').style.width = `${progressPercentage}%`;
+
+      // Обновляем общий прогресс
+      document.getElementById('total-progress-bar').style.width = `${totalProgressPercentage}%`;
+
+      // Обновляем XP за сегодня
+      const completedChallenges = getCompletedChallenges();
+      const today = new Date().toLocaleDateString('ru-RU', { day: '2-digit', month: '2-digit', year: 'numeric' });
+      const todayXP = completedChallenges
+        .filter(challenge => challenge.date === today)
+        .reduce((sum, challenge) => sum + challenge.xp, 0);
+      document.getElementById('xp-today').textContent = `+${todayXP} XP сегодня`;
+    }
+
+    function updateCompletedQuests() {
+      const completedChallenges = getCompletedChallenges();
+      const dailyQuests = completedChallenges.filter(challenge => challenge.type === 'daily');
+      const weeklyQuests = completedChallenges.filter(challenge => challenge.type === 'weekly');
+
+      const dailyList = document.getElementById('daily-quests-list');
+      dailyList.innerHTML = dailyQuests.length > 0 ? dailyQuests.map(q => `
+        <li class="quest-item flex justify-between items-center text-sm">
+          <span class="flex items-center">
+            <i class="w-5 h-5 text-green-500 mr-2" data-lucide="${q.icon}"></i>
+            ${q.title}
+          </span>
+          <span class="text-gray-500 font-medium">+${q.xp} XP (${q.date})</span>
+        </li>
+      `).join('') : '<li class="text-sm text-gray-500">Нет выполненных ежедневных квестов</li>';
+
+      const weeklyList = document.getElementById('weekly-quests-list');
+      weeklyList.innerHTML = weeklyQuests.length > 0 ? weeklyQuests.map(q => `
+        <li class="quest-item flex justify-between items-center text-sm">
+          <span class="flex items-center">
+            <i class="w-5 h-5 text-green-500 mr-2" data-lucide="${q.icon}"></i>
+            ${q.title}
+          </span>
+          <span class="text-gray-500 font-medium">+${q.xp} XP (${q.date})</span>
+        </li>
+      `).join('') : '<li class="text-sm text-gray-500">Нет выполненных еженедельных квестов</li>';
+
+      lucide.createIcons();
+    }
+  </script>
+</body>
+</html>

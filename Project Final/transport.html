@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ЭкоЧеллендж - Транспорт</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://unpkg.com/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+</head>
+<body class="bg-gray-50">
+  <header class="relative z-10 py-4 px-4 flex items-center justify-between border-b bg-white/80 backdrop-blur-sm">
+    <div class="flex items-center space-x-2">
+      <i class="text-green-600" data-lucide="leaf"></i>
+      <h1 class="text-xl font-medium">ЭкоЧеллендж</h1>
+    </div>
+    <nav class="hidden md:flex items-center space-x-1">
+      <a href="challenges.html" class="nav-btn">
+        <i data-lucide="leaf"></i>
+        <span>Вызовы</span>
+      </a>
+      <a href="ranks.html" class="nav-btn">
+        <i data-lucide="award"></i>
+        <span>Ранги</span>
+      </a>
+      <a href="transport.html" class="nav-btn active">
+        <i data-lucide="car"></i>
+        <span>Транспорт</span>
+      </a>
+      <a href="index.html" class="nav-btn">
+        <i data-lucide="bar-chart"></i>
+        <span>Прогресс</span>
+      </a>
+      <a href="index.html#profile" class="nav-btn">
+        <i data-lucide="user"></i>
+        <span>Профиль</span>
+      </a>
+    </nav>
+    <div class="md:hidden">
+      <button class="p-2 rounded-lg bg-gray-100" id="mobile-menu-btn">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="18" x2="20" y2="18"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <main class="flex-1 relative z-10 px-4 pb-16 pt-6">
+    <div class="max-w-5xl mx-auto">
+      <section class="mb-8">
+        <h2 class="text-xl font-medium mb-4">Сравнение транспорта</h2>
+        <div class="transport-comparison p-6 rounded-2xl border border-gray-200 bg-white shadow-sm">
+          <div class="grid grid-cols-5 gap-3 mb-6">
+            <button class="transport-option" data-transport="gas-car">
+              <div class="flex flex-col items-center">
+                <div class="mb-2">
+                  <i class="h-6 w-6 text-red-500" data-lucide="car"></i>
+                </div>
+                <div class="text-sm font-medium text-center">Бензиновый авто</div>
+              </div>
+            </button>
+            <button class="transport-option" data-transport="electric-car">
+              <div class="flex flex-col items-center">
+                <div class="mb-2">
+                  <i class="h-6 w-6 text-blue-500" data-lucide="zap"></i>
+                </div>
+                <div class="text-sm font-medium text-center">Электромобиль</div>
+              </div>
+            </button>
+            <button class="transport-option" data-transport="bike">
+              <div class="flex flex-col items-center">
+                <div class="mb-2">
+                  <i class="h-6 w-6 text-green-500" data-lucide="bike"></i>
+                </div>
+                <div class="text-sm font-medium text-center">Велосипед</div>
+              </div>
+            </button>
+            <button class="transport-option" data-transport="electric-scooter">
+              <div class="flex flex-col items-center">
+                <div class="mb-2">
+                  <i class="h-6 w-6 text-purple-500" data-lucide="bike"></i>
+                </div>
+                <div class="text-sm font-medium text-center">Электросамокат</div>
+              </div>
+            </button>
+            <button class="transport-option" data-transport="bus">
+              <div class="flex flex-col items-center">
+                <div class="mb-2">
+                  <i class="h-6 w-6 text-orange-500" data-lucide="bus"></i>
+                </div>
+                <div class="text-sm font-medium text-center">Автобус</div>
+              </div>
+            </button>
+          </div>
+          
+          <div class="space-y-4 transport-info" id="gas-car-info">
+            <div class="text-sm">Выделяет значительное количество CO2 и других загрязняющих веществ.</div>
+            <div class="grid grid-cols-3 gap-3 transition-opacity duration-300">
+              <div class="metric-card p-3 rounded-lg bg-gray-100 text-center">
+                <div class="flex items-center justify-center mb-1">
+                  <i class="h-5 w-5 text-gray-600" data-lucide="cloud"></i>
+                  <span class="text-xs ml-2">CO2</span>
+                </div>
+                <div class="text-lg font-semibold text-red-500">18.5 кг</div>
+              </div>
+              <div class="metric-card p-3 rounded-lg bg-gray-100 text-center">
+                <div class="flex items-center justify-center mb-1">
+                  <i class="h-5 w-5 text-gray-600" data-lucide="droplet"></i>
+                  <span class="text-xs ml-2">Вода</span>
+                </div>
+                <div class="text-lg font-semibold text-red-500">400 л</div>
+              </div>
+              <div class="metric-card p-3 rounded-lg bg-gray-100 text-center">
+                <div class="flex items-center justify-center mb-1">
+                  <i class="h-5 w-5 text-gray-600" data-lucide="bar-chart"></i>
+                  <span class="text-xs ml-2">Рейтинг</span>
+                </div>
+                <div class="text-lg font-semibold text-red-500">2/10</div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="space-y-4 transport-info hidden" id="electric-car-info">
+            <div class="text-sm">Меньше выбросов, но производство батарей требует ресурсов.</div>
+            <div class="grid grid-cols-3 gap-3 transition-opacity duration-300">
+              <div class="metric-card p-3 rounded-lg bg-gray-100 text-center">
+                <div class="flex items-center justify-center mb-1">
+                  <i class="h-5 w-5 text-gray-600" data-lucide="cloud"></i>
+                  <span class="text-xs ml-2">CO2</span>
+                </div>
+                <div class="text-lg font-semibold text-amber-500">5.2 кг</div>
+              </div>
+              <div class="metric-card p-3 rounded-lg bg-gray-100 text-center">
+                <div class="flex items-center justify-center mb-1">
+                  <i class="h-5 w-5 text-gray-600" data-lucide="droplet"></i>
+                  <span class="text-xs ml-2">Вода</span>
+                </div>
+                <div class="text-lg font-semibold text-amber-500">180 л</div>
+              </div>
+              <div class="metric-card p-3 rounded-lg bg-gray-100 text-center">
+                <div class="flex items-center justify-center mb-1">
+                  <i class="h-5 w-5 text-gray-600" data-lucide="bar-chart"></i>
+                  <span class="text-xs ml-2">Рейтинг</span>
+                </div>
+                <div class="text-lg font-semibold text-green-500">7/10</div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="space-y-4 transport-info hidden" id="bike-info">
+            <div class="text-sm">Нулевые выбросы и положительное влияние на ваше здоровье.</div>
+            <div class="grid grid-cols-3 gap-3 transition-opacity duration-300">
+              <div class="metric-card p-3 rounded-lg bg-gray-100 text-center">
+                <div class="flex items-center justify-center mb-1">
+                  <i class="h-5 w-5 text-gray-600" data-lucide="cloud"></i>
+                  <span class="text-xs ml-2">CO2</span>
+                </div>
+                <div class="text-lg font-semibold text-green-500">0 кг</div>
+              </div>
+              <div class="metric-card p-3 rounded-lg bg-gray-100 text-center">
+                <div class="flex items-center justify-center mb-1">
+                  <i class="h-5 w-5 text-gray-600" data-lucide="droplet"></i>
+                  <span class="text-xs ml-2">Вода</span>
+                </div>
+                <div class="text-lg font-semibold text-green-500">0 л</div>
+              </div>
+              <div class="metric-card p-3 rounded-lg bg-gray-100 text-center">
+                <div class="flex items-center justify-center mb-1">
+                  <i class="h-5 w-5 text-gray-600" data-lucide="bar-chart"></i>
+                  <span class="text-xs ml-2">Рейтинг</span>
+                </div>
+                <div class="text-lg font-semibold text-green-500">10/10</div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="space-y-4 transport-info hidden" id="electric-scooter-info">
+            <div class="text-sm">Экологичный и удобный городской транспорт с минимальными выбросами.</div>
+            <div class="grid grid-cols-3 gap-3 transition-opacity duration-300">
+              <div class="metric-card p-3 rounded-lg bg-gray-100 text-center">
+                <div class="flex items-center justify-center mb-1">
+                  <i class="h-5 w-5 text-gray-600" data-lucide="cloud"></i>
+                  <span class="text-xs ml-2">CO2</span>
+                </div>
+                <div class="text-lg font-semibold text-purple-500">2.1 кг</div>
+              </div>
+              <div class="metric-card p-3 rounded-lg bg-gray-100 text-center">
+                <div class="flex items-center justify-center mb-1">
+                  <i class="h-5 w-5 text-gray-600" data-lucide="droplet"></i>
+                  <span class="text-xs ml-2">Вода</span>
+                </div>
+                <div class="text-lg font-semibold text-purple-500">50 л</div>
+              </div>
+              <div class="metric-card p-3 rounded-lg bg-gray-100 text-center">
+                <div class="flex items-center justify-center mb-1">
+                  <i class="h-5 w-5 text-gray-600" data-lucide="bar-chart"></i>
+                  <span class="text-xs ml-2">Рейтинг</span>
+                </div>
+                <div class="text-lg font-semibold text-green-500">8/10</div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="space-y-4 transport-info hidden" id="bus-info">
+            <div class="text-sm">Общественный транспорт с умеренными выбросами на душу населения.</div>
+            <div class="grid grid-cols-3 gap-3 transition-opacity duration-300">
+              <div class="metric-card p-3 rounded-lg bg-gray-100 text-center">
+                <div class="flex items-center justify-center mb-1">
+                  <i class="h-5 w-5 text-gray-600" data-lucide="cloud"></i>
+                  <span class="text-xs ml-2">CO2</span>
+                </div>
+                <div class="text-lg font-semibold text-orange-500">3.8 кг</div>
+              </div>
+              <div class="metric-card p-3 rounded-lg bg-gray-100 text-center">
+                <div class="flex items-center justify-center mb-1">
+                  <i class="h-5 w-5 text-gray-600" data-lucide="droplet"></i>
+                  <span class="text-xs ml-2">Вода</span>
+                </div>
+                <div class="text-lg font-semibold text-orange-500">120 л</div>
+              </div>
+              <div class="metric-card p-3 rounded-lg bg-gray-100 text-center">
+                <div class="flex items-center justify-center mb-1">
+                  <i class="h-5 w-5 text-gray-600" data-lucide="bar-chart"></i>
+                  <span class="text-xs ml-2">Рейтинг</span>
+                </div>
+                <div class="text-lg font-semibold text-green-500">6/10</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <div class="fixed bottom-0 left-0 right-0 z-20 md:hidden">
+    <div class="flex items-center justify-around p-2 bg-white border-t">
+      <a href="challenges.html" class="p-2 rounded-lg text-gray-700">
+        <i data-lucide="leaf"></i>
+      </a>
+      <a href="ranks.html" class="p-2 rounded-lg text-gray-700">
+        <i data-lucide="award"></i>
+      </a>
+      <a href="transport.html" class="p-2 rounded-lg text-green-800 bg-green-100">
+        <i data-lucide="car"></i>
+      </a>
+      <a href="index.html" class="p-2 rounded-lg text-gray-700">
+        <i data-lucide="bar-chart"></i>
+      </a>
+      <a href="index.html#profile" class="p-2 rounded-lg text-gray-700">
+        <i data-lucide="user"></i>
+      </a>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

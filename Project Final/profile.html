@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ЭкоЧеллендж - Профиль</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://unpkg.com/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+</head>
+<body class="bg-gray-50">
+  <div class="background">
+    <div class="bg-gradient"></div>
+    <div class="circle circle-1"></div>
+    <div class="circle circle-2"></div>
+    <div class="grid-pattern"></div>
+  </div>
+
+  <header class="relative z-10 py-4 px-4 flex items-center justify-between border-b bg-white/80 backdrop-blur-sm">
+    <div class="flex items-center space-x-2">
+      <i class="text-green-600" data-lucide="leaf"></i>
+      <h1 class="text-xl font-medium">ЭкоЧеллендж</h1>
+    </div>
+    <nav class="hidden md:flex items-center space-x-1">
+      <a href="challenges.html" class="nav-btn">
+        <i data-lucide="leaf"></i>
+        <span>Вызовы</span>
+      </a>
+      <a href="ranks.html" class="nav-btn">
+        <i data-lucide="award"></i>
+        <span>Ранги</span>
+      </a>
+      <a href="transport.html" class="nav-btn">
+        <i data-lucide="car"></i>
+        <span>Транспорт</span>
+      </a>
+      <a href="index.html" class="nav-btn">
+        <i data-lucide="bar-chart"></i>
+        <span>Прогресс</span>
+      </a>
+      <a href="profile.html" class="nav-btn active">
+        <i data-lucide="user"></i>
+        <span>Профиль</span>
+      </a>
+    </nav>
+    <div class="md:hidden">
+      <button class="p-2 rounded-lg bg-gray-100" id="mobile-menu-btn">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="18" x2="20" y2="18"/></svg>
+      </button>
+    </div>
+  </header>
+  
+  <main class="flex-1 relative z-10 px-4 pb-16 pt-6">
+    <div class="max-w-5xl mx-auto">
+      <section class="mb-8">
+        <h2 class="text-xl font-medium mb-4">Ваш профиль</h2>
+        <div class="user-profile p-5 rounded-lg border border-gray-200 shadow-sm bg-white">
+          <div class="flex items-center mb-5">
+            <div class="relative">
+              <img id="avatar" src="images/avatar1.jpg" class="w-14 h-14 rounded-full cursor-pointer" alt="Аватар">
+              <div class="absolute -bottom-1 -right-1 w-6 h-6 rounded-full bg-green-500 flex items-center justify-center text-xs text-white font-medium">3</div>
+            </div>
+            <div class="ml-4">
+              <h2 class="text-xl font-medium">Кирилл</h2>
+              <div class="text-sm text-gray-500">Эко-энтузиаст</div>
+            </div>
+          </div>
+
+          <!-- Модальное окно для загрузки аватара -->
+          <div id="avatar-modal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+            <div class="bg-white p-6 rounded-lg max-w-md w-full shadow-md">
+              <h3 class="text-lg font-medium mb-4 text-green-700">Загрузите свой аватар</h3>
+              <div class="flex justify-center mb-6">
+                <img id="avatar-preview" src="images/avatar1.jpg" class="w-24 h-24 rounded-full border-2 border-green-100 object-cover" alt="Предпросмотр аватара">
+              </div>
+              <div class="mb-6">
+                <label for="custom-avatar" class="block w-full text-center py-2 px-4 bg-green-500 text-white rounded-full cursor-pointer hover:bg-green-600 transition-colors flex items-center justify-center">
+                  <i class="w-5 h-5 mr-2" data-lucide="upload"></i>
+                  Выбрать фото
+                </label>
+                <input type="file" id="custom-avatar" accept="image/*" class="hidden">
+              </div>
+              <button id="save-avatar-btn" class="w-full py-2 rounded-full bg-green-100 hover:bg-green-200 text-green-700 font-medium mb-4 transition-colors">Сохранить</button>
+              <button id="close-avatar-modal" class="w-full py-2 rounded-full bg-gray-100 hover:bg-gray-200 text-gray-700 font-medium transition-colors">Закрыть</button>
+            </div>
+          </div>
+
+          <!-- Обновлённая информация о профиле -->
+          <div class="space-y-4 mb-6">
+            <div class="flex items-center">
+              <i class="w-5 h-5 text-gray-500 mr-2" data-lucide="calendar"></i>
+              <span class="text-sm">Дата регистрации: 15 марта 2023</span>
+            </div>
+            <div class="flex items-center">
+              <i class="w-5 h-5 text-gray-500 mr-2" data-lucide="award"></i>
+              <span class="text-sm">Текущий ранг: Эко-энтузиаст</span>
+            </div>
+            <div class="flex items-center">
+              <i class="w-5 h-5 text-gray-500 mr-2" data-lucide="leaf"></i>
+              <span class="text-sm">Выполнено заданий: 24</span>
+            </div>
+            <div class="flex items-center">
+              <i class="w-5 h-5 text-gray-500 mr-2" data-lucide="clock"></i>
+              <span class="text-sm">Активная серия: 7 дней</span>
+            </div>
+            <div class="flex items-center">
+              <i class="w-5 h-5 text-gray-500 mr-2" data-lucide="map-pin"></i>
+              <span class="text-sm">Город: Москва</span>
+            </div>
+            <div class="flex items-center">
+              <i class="w-5 h-5 text-gray-500 mr-2" data-lucide="cloud"></i>
+              <span class="text-sm" id="co2-saved">Сэкономлено CO2: 120 кг</span>
+            </div>
+            <div class="flex items-center">
+              <i class="w-5 h-5 text-gray-500 mr-2" data-lucide="trophy"></i>
+              <span class="text-sm" id="leaderboard-position">Позиция в рейтинге: 1 из 42</span>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+  
+  <div class="fixed bottom-0 left-0 right-0 z-20 md:hidden">
+    <div class="flex items-center justify-around p-2 bg-white border-t">
+      <a href="challenges.html" class="p-2 rounded-lg text-gray-700">
+        <i data-lucide="leaf"></i>
+      </a>
+      <a href="ranks.html" class="p-2 rounded-lg text-gray-700">
+        <i data-lucide="award"></i>
+      </a>
+      <a href="transport.html" class="p-2 rounded-lg text-gray-700">
+        <i data-lucide="car"></i>
+      </a>
+      <a href="index.html" class="p-2 rounded-lg text-gray-700">
+        <i data-lucide="bar-chart"></i>
+      </a>
+      <a href="profile.html" class="p-2 rounded-lg text-green-800 bg-green-100">
+        <i data-lucide="user"></i>
+      </a>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Инициализация Lucide иконок
+      lucide.createIcons();
+      setTimeout(() => lucide.createIcons(), 100);
+
+      // Мобильное меню
+      setupMobileMenu();
+
+      // Настройка выбора аватара
+      setupAvatarSelection();
+
+      // Обновление данных профиля
+      updateProfileData();
+    });
+
+    function setupMobileMenu() {
+      const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+      const mobileMenu = document.getElementById('mobile-menu');
+      const closeMobileMenuBtn = document.getElementById('close-mobile-menu');
+
+      if (mobileMenuBtn && mobileMenu && closeMobileMenuBtn) {
+        mobileMenuBtn.addEventListener('click', () => {
+          mobileMenu.classList.remove('-translate-x-full');
+          mobileMenu.classList.add('translate-x-0');
+        });
+
+        closeMobileMenuBtn.addEventListener('click', () => {
+          mobileMenu.classList.remove('translate-x-0');
+          mobileMenu.classList.add('-translate-x-full');
+        });
+
+        const navLinks = mobileMenu.querySelectorAll('.nav-btn-mobile');
+        navLinks.forEach(link => {
+          link.addEventListener('click', () => {
+            mobileMenu.classList.remove('translate-x-0');
+            mobileMenu.classList.add('-translate-x-full');
+          });
+        });
+      }
+    }
+
+    function setupAvatarSelection() {
+      const avatar = document.getElementById('avatar');
+      const avatarModal = document.getElementById('avatar-modal');
+      const closeModalBtn = document.getElementById('close-avatar-modal');
+      const saveAvatarBtn = document.getElementById('save-avatar-btn');
+      const customAvatarInput = document.getElementById('custom-avatar');
+      const avatarPreview = document.getElementById('avatar-preview');
+
+      const savedAvatar = localStorage.getItem('customAvatar');
+      if (savedAvatar) {
+        avatar.src = savedAvatar;
+        avatarPreview.src = savedAvatar;
+      }
+
+      if (avatar) {
+        avatar.addEventListener('click', () => {
+          avatarModal.classList.remove('hidden');
+          avatarPreview.src = avatar.src;
+        });
+      }
+
+      if (closeModalBtn) {
+        closeModalBtn.addEventListener('click', () => {
+          avatarModal.classList.add('hidden');
+        });
+      }
+
+      if (customAvatarInput) {
+        customAvatarInput.addEventListener('change', (e) => {
+          const file = e.target.files[0];
+          if (file) {
+            const reader = new FileReader();
+            reader.onload = (event) => {
+              avatarPreview.src = event.target.result;
+            };
+            reader.readAsDataURL(file);
+          }
+        });
+      }
+
+      if (saveAvatarBtn) {
+        saveAvatarBtn.addEventListener('click', () => {
+          const previewSrc = avatarPreview.src;
+          if (previewSrc && !previewSrc.includes('images/avatar1.jpg')) {
+            avatar.src = previewSrc;
+            localStorage.setItem('customAvatar', previewSrc);
+          }
+          avatarModal.classList.add('hidden');
+        });
+      }
+    }
+
+    function updateProfileData() {
+      // Пример динамического обновления CO2 и позиции в рейтинге
+      const savedXP = parseInt(localStorage.getItem('userXP')) || 450; // Начальное значение из index.html
+      const co2SavedElement = document.getElementById('co2-saved');
+      const leaderboardPositionElement = document.getElementById('leaderboard-position');
+
+      // Простой расчёт CO2 (например, 0.5 кг CO2 за каждые 10 XP)
+      const co2Saved = Math.floor(savedXP * 0.05);
+      co2SavedElement.textContent = `Сэкономлено CO2: ${co2Saved} кг`;
+
+      // Позиция в рейтинге (пример: фиксированная, можно связать с ranks.html)
+      const totalParticipants = 42; // Из таблицы лидеров
+      const position = savedXP >= 7500 ? 1 : Math.floor((7500 - savedXP) / 100) + 1; // Пример расчёта
+      leaderboardPositionElement.textContent = `Позиция в рейтинге: ${position} из ${totalParticipants}`;
+    }
+  </script>
+</body>
+</html>

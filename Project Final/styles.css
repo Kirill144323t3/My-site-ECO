@@ -1,0 +1,364 @@
+:root {
+  --primary-green: #10b981;
+  --light-green: #d1fae5;
+  --secondary-green: #34d399;
+  --hover-green: #059669;
+  --background-light: #f9fafb;
+  --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  --transition-speed: 0.3s;
+  --gold-highlight: #fef3c7;
+}
+
+body {
+  background-color: var(--background-light);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  overflow-x: hidden;
+  transition: background-color var(--transition-speed) ease-in-out;
+}
+
+.background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  overflow: hidden;
+}
+
+.bg-gradient {
+  background: linear-gradient(135deg, #a7f3d0 0%, #e0f2fe 70%);
+  opacity: 0.2;
+  width: 100%;
+  height: 100%;
+  transition: opacity var(--transition-speed) ease-in-out;
+}
+
+.circle {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(16, 185, 129, 0.1);
+  animation: float 15s infinite ease-in-out alternate;
+}
+
+.circle-1 {
+  width: 300px;
+  height: 300px;
+  top: -100px;
+  left: -100px;
+}
+
+.circle-2 {
+  width: 200px;
+  height: 200px;
+  bottom: -50px;
+  right: -50px;
+}
+
+.grid-pattern {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 10px,
+      rgba(16, 185, 129, 0.05) 10px,
+      rgba(12, 146, 101, 0.05) 20px
+  );
+  opacity: 0.3;
+  transition: opacity var(--transition-speed) ease-in-out;
+}
+
+@keyframes float {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-20px); }
+}
+
+header {
+  background-color: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  transition: background-color var(--transition-speed) ease-in-out;
+}
+
+header .nav-btn {
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 500;
+  color: #374151;
+  transition: all var(--transition-speed) ease-in-out;
+}
+
+header .nav-btn:hover {
+  background-color: rgba(209, 250, 229, 0.5);
+  color: var(--primary-green);
+  transform: translateY(-2px);
+  box-shadow: var(--card-shadow);
+}
+
+header .nav-btn.active {
+  background: linear-gradient(90deg, #065f46, #10b981);
+  color: white;
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+  transform: translateY(-2px);
+}
+
+.challenge-card {
+  position: relative; /* Для позиционирования XP анимации */
+  background-color: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  box-shadow: var(--card-shadow);
+  transition: all var(--transition-speed) ease-in-out;
+}
+
+.challenge-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.challenge-card button {
+  background: linear-gradient(90deg, #065f46, #10b981);
+  color: white;
+  font-weight: 600;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.75rem;
+  box-shadow: var(--card-shadow);
+  transition: all var(--transition-speed) ease-in-out;
+}
+
+.challenge-card button:hover:not(.cursor-not-allowed) {
+  background: linear-gradient(90deg, #064e3b, #059669);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(16, 185, 129, 0.4);
+}
+
+.tab-btn {
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.75rem;
+  font-weight: 500;
+  color: #374151;
+  transition: all var(--transition-speed) ease-in-out;
+  background-color: #f3f4f6;
+}
+
+.tab-btn:hover {
+  background-color: rgba(209, 250, 229, 0.7);
+  color: var(--primary-green);
+  transform: translateY(-2px);
+}
+
+.tab-btn.active {
+  background: linear-gradient(90deg, #065f46, #10b981);
+  color: white;
+  box-shadow: var(--card-shadow);
+  transform: translateY(-2px);
+}
+
+.tab-content {
+  transition: opacity var(--transition-speed) ease-in-out;
+}
+
+.eco-rank, .user-profile {
+  background-color: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  box-shadow: var(--card-shadow);
+  transition: all var(--transition-speed) ease-in-out;
+}
+
+.eco-rank:hover, .user-profile:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.stat-card, .achievement {
+  background-color: #f9fafb;
+  border-radius: 0.75rem;
+  padding: 0.75rem;
+  transition: all var(--transition-speed) ease-in-out;
+}
+
+.stat-card:hover, .achievement:hover {
+  background-color: rgba(209, 250, 229, 0.3);
+  transform: translateY(-2px);
+}
+
+.progress-details, .profile-details {
+  overflow: hidden;
+  transition: opacity var(--transition-speed) ease-in-out, height var(--transition-speed) ease-in-out;
+}
+
+table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  background-color: white;
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: var(--card-shadow);
+  transition: all var(--transition-speed) ease-in-out;
+}
+
+table th, table td {
+  padding: 0.75rem 1rem;
+  text-align: left;
+  transition: background-color var(--transition-speed) ease-in-out;
+}
+
+table th {
+  cursor: pointer;
+}
+
+table th:hover {
+  background-color: rgba(209, 250, 229, 0.3);
+  color: var(--primary-green);
+}
+
+table thead tr {
+  background-color: #f3f4f6;
+  border-bottom: 2px solid #e5e7eb;
+}
+
+table tbody tr {
+  border-bottom: 1px solid #e5e7eb;
+  transition: all var(--transition-speed) ease-in-out;
+}
+
+table tbody tr:hover {
+  background-color: rgba(209, 250, 229, 0.3);
+  transform: translateY(-2px);
+}
+
+table tbody tr.bg-green-50 {
+  background-color: #ecfdf5;
+  font-weight: 500;
+}
+
+table tbody tr.first-place {
+  background: linear-gradient(90deg, var(--gold-highlight), #fefce8);
+  font-weight: 600;
+  animation: glow 2s infinite ease-in-out alternate;
+}
+
+@keyframes glow {
+  0% { box-shadow: 0 0 10px rgba(234, 179, 8, 0.3); }
+  100% { box-shadow: 0 0 20px rgba(234, 179, 8, 0.6); }
+}
+
+.transport-comparison {
+  background-color: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 1.5rem;
+  padding: 2rem;
+  box-shadow: var(--card-shadow);
+  transition: all var(--transition-speed) ease-in-out;
+}
+
+button.transport-option {
+  padding: 1rem;
+  border-radius: 0.75rem;
+  transition: all var(--transition-speed) ease-in-out;
+  background-color: #f3f4f6 !important;
+  color: #374151 !important;
+}
+
+button.transport-option:hover {
+  background-color: rgba(209, 250, 229, 0.5) !important;
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+button.transport-option.active {
+  background: linear-gradient(90deg, #065f46, #10b981) !important;
+  color: white !important;
+  box-shadow: 0 6px 16px rgba(16, 185, 129, 0.3);
+  transform: translateY(-3px);
+}
+
+.transport-info {
+  transition: opacity var(--transition-speed) ease-in-out;
+}
+
+.metric-card {
+  background-color: #f9fafb;
+  border-radius: 0.75rem;
+  padding: 1rem;
+  transition: all var(--transition-speed) ease-in-out;
+}
+
+.metric-card:hover {
+  background-color: rgba(209, 250, 229, 0.3);
+  transform: translateY(-2px);
+}
+
+.fixed button {
+  padding: 0.75rem;
+  border-radius: 0.75rem;
+  transition: all var(--transition-speed) ease-in-out;
+}
+
+.fixed button:hover {
+  background-color: rgba(209, 250, 229, 0.5);
+  transform: translateY(-2px);
+}
+
+.fixed button.active {
+  background: linear-gradient(90deg, #065f46, #10b981);
+  color: white;
+  box-shadow: var(--card-shadow);
+}
+
+/* Анимация начисления XP */
+.xp-popup {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(16, 185, 129, 0.9);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  animation: xpFade 2s ease-in-out forwards;
+  z-index: 10;
+}
+
+@keyframes xpFade {
+  0% {
+      opacity: 0;
+      transform: translate(-50%, -50%) scale(0.5);
+  }
+  50% {
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1);
+  }
+  100% {
+      opacity: 0;
+      transform: translate(-50%, -50%) translateY(-50px) scale(1.2);
+  }
+}
+
+/* Стили для мобильного меню */
+.nav-btn-mobile {
+  color: #374151;
+  transition: all var(--transition-speed) ease-in-out;
+}
+
+.nav-btn-mobile:hover {
+  background-color: rgba(209, 250, 229, 0.5);
+  color: var(--primary-green);
+}
+
+.nav-btn-mobile.active {
+  background: linear-gradient(90deg, #065f46, #10b981);
+  color: white;
+}

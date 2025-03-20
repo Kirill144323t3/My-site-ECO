@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ЭкоЧеллендж - Вызовы</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://unpkg.com/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+</head>
+<body class="bg-gray-50">
+  <!-- Мобильное меню -->
+  <div id="mobile-menu" class="fixed inset-y-0 left-0 w-64 bg-white shadow-lg transform -translate-x-full transition-transform duration-300 z-30 md:hidden">
+    <div class="p-4 border-b">
+      <div class="flex items-center space-x-2">
+        <i class="text-green-600" data-lucide="leaf"></i>
+        <h2 class="text-lg font-medium">ЭкоЧеллендж</h2>
+      </div>
+      <button id="close-mobile-menu" class="absolute top-4 right-4">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <nav class="flex flex-col p-4 space-y-2">
+      <a href="challenges.html" class="nav-btn-mobile flex items-center space-x-2 p-2 rounded-lg active">
+        <i data-lucide="leaf"></i>
+        <span>Вызовы</span>
+      </a>
+      <a href="ranks.html" class="nav-btn-mobile flex items-center space-x-2 p-2 rounded-lg">
+        <i data-lucide="award"></i>
+        <span>Ранги</span>
+      </a>
+      <a href="transport.html" class="nav-btn-mobile flex items-center space-x-2 p-2 rounded-lg">
+        <i data-lucide="car"></i>
+        <span>Транспорт</span>
+      </a>
+      <a href="index.html" class="nav-btn-mobile flex items-center space-x-2 p-2 rounded-lg">
+        <i data-lucide="bar-chart"></i>
+        <span>Прогресс</span>
+      </a>
+      <a href="profile.html" class="nav-btn-mobile flex items-center space-x-2 p-2 rounded-lg">
+        <i data-lucide="user"></i>
+        <span>Профиль</span>
+      </a>
+    </nav>
+  </div>
+
+  <header class="relative z-10 py-4 px-4 flex items-center justify-between border-b bg-white/80 backdrop-blur-sm">
+    <div class="flex items-center space-x-2">
+      <i class="text-green-600" data-lucide="leaf"></i>
+      <h1 class="text-xl font-medium">ЭкоЧеллендж</h1>
+    </div>
+    <nav class="hidden md:flex items-center space-x-1">
+      <a href="challenges.html" class="nav-btn active">
+        <i data-lucide="leaf"></i>
+        <span>Вызовы</span>
+      </a>
+      <a href="ranks.html" class="nav-btn">
+        <i data-lucide="award"></i>
+        <span>Ранги</span>
+      </a>
+      <a href="transport.html" class="nav-btn">
+        <i data-lucide="car"></i>
+        <span>Транспорт</span>
+      </a>
+      <a href="index.html" class="nav-btn">
+        <i data-lucide="bar-chart"></i>
+        <span>Прогресс</span>
+      </a>
+      <a href="profile.html" class="nav-btn">
+        <i data-lucide="user"></i>
+        <span>Профиль</span>
+      </a>
+    </nav>
+    <div class="md:hidden">
+      <button class="p-2 rounded-lg bg-gray-100" id="mobile-menu-btn">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="18" x2="20" y2="18"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <main class="flex-1 relative z-10 px-4 pb-16 pt-6">
+    <div class="max-w-5xl mx-auto">
+      <h2 class="text-xl font-medium mb-4">Эко-вызовы</h2>
+      
+      <!-- Вкладки -->
+      <div class="flex space-x-4 mb-6">
+        <button class="tab-btn active" data-tab="daily">Ежедневные</button>
+        <button class="tab-btn" data-tab="weekly">Еженедельные</button>
+      </div>
+
+      <!-- Контент вкладок с анимацией -->
+      <div id="daily" class="tab-content">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-5 transition-opacity duration-300" id="daily-challenges"></div>
+      </div>
+      <div id="weekly" class="tab-content hidden">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-5 transition-opacity duration-300" id="weekly-challenges"></div>
+      </div>
+    </div>
+  </main>
+
+  <div class="fixed bottom-0 left-0 right-0 z-20 md:hidden">
+    <div class="flex items-center justify-around p-2 bg-white border-t">
+      <a href="challenges.html" class="p-2 rounded-lg text-green-800 bg-green-100">
+        <i data-lucide="leaf"></i>
+      </a>
+      <a href="ranks.html" class="p-2 rounded-lg text-gray-700">
+        <i data-lucide="award"></i>
+      </a>
+      <a href="transport.html" class="p-2 rounded-lg text-gray-700">
+        <i data-lucide="car"></i>
+      </a>
+      <a href="index.html" class="p-2 rounded-lg text-gray-700">
+        <i data-lucide="bar-chart"></i>
+      </a>
+      <a href="profile.html" class="p-2 rounded-lg text-gray-700">
+        <i data-lucide="user"></i>
+      </a>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9235065f5dc153de',t:'MTc0MjQ3MTc3Mi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
+</body>
+</html>

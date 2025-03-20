@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ЭкоЧеллендж - Ранги</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://unpkg.com/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+</head>
+<body class="bg-gray-50">
+  <header class="relative z-10 py-4 px-4 flex items-center justify-between border-b bg-white/80 backdrop-blur-sm">
+    <div class="flex items-center space-x-2">
+      <i class="text-green-600" data-lucide="leaf"></i>
+      <h1 class="text-xl font-medium">ЭкоЧеллендж</h1>
+    </div>
+    <nav class="hidden md:flex items-center space-x-1">
+      <a href="challenges.html" class="nav-btn">
+        <i data-lucide="leaf"></i>
+        <span>Вызовы</span>
+      </a>
+      <a href="ranks.html" class="nav-btn active">
+        <i data-lucide="award"></i>
+        <span>Ранги</span>
+      </a>
+      <a href="transport.html" class="nav-btn">
+        <i data-lucide="car"></i>
+        <span>Транспорт</span>
+      </a>
+      <a href="index.html" class="nav-btn">
+        <i data-lucide="bar-chart"></i>
+        <span>Прогресс</span>
+      </a>
+      <a href="index.html#profile" class="nav-btn">
+        <i data-lucide="user"></i>
+        <span>Профиль</span>
+      </a>
+    </nav>
+    <div class="md:hidden">
+      <button class="p-2 rounded-lg bg-gray-100" id="mobile-menu-btn">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="18" x2="20" y2="18"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <main class="flex-1 relative z-10 px-4 pb-16 pt-6">
+    <div class="max-w-5xl mx-auto">
+      <!-- Секция текущего ранга -->
+      <section class="mb-8">
+        <h2 class="text-xl font-medium mb-4">Ваш ранг</h2>
+        <div class="eco-rank p-5 rounded-lg border border-gray-200 shadow-sm bg-white">
+          <div class="flex items-center justify-between mb-3">
+            <div class="flex items-center">
+              <div class="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center mr-3">
+                <i class="text-green-700" data-lucide="award"></i>
+              </div>
+              <div>
+                <h3 class="font-medium">Эко-энтузиаст</h3>
+                <div class="flex items-center text-sm text-gray-500">
+                  <span>Уровень 3</span>
+                  <div class="mx-2 w-1 h-1 rounded-full bg-gray-300"></div>
+                  <span>450 XP</span>
+                </div>
+              </div>
+            </div>
+            <div class="hidden sm:flex items-center text-xs px-2 py-1 rounded-full bg-blue-100 text-blue-800">
+              <i class="w-3 h-3 mr-1" data-lucide="arrow-up"></i>
+              <span>+120 XP сегодня</span>
+            </div>
+          </div>
+          
+          <div class="progress-container">
+            <div class="flex justify-between text-sm mb-1">
+              <span>До следующего уровня</span>
+              <span class="text-gray-500">450/1000</span>
+            </div>
+            <div class="w-full h-2 bg-gray-200 rounded-full">
+              <div class="h-2 bg-green-500 rounded-full" style="width: 45%"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Таблица лидеров -->
+      <section class="mb-8">
+        <div class="flex justify-between items-center mb-4">
+          <h2 class="text-xl font-medium">Таблица лидеров</h2>
+          <button class="text-sm font-medium text-green-600 hover:text-green-800 transition-colors" id="view-all">
+            Смотреть все
+          </button>
+        </div>
+        
+        <div class="p-5 rounded-lg border border-gray-200 shadow-sm bg-white">
+          <div class="overflow-x-auto">
+            <table class="w-full">
+              <thead>
+                <tr class="border-b">
+                  <th class="text-left py-2 px-3 cursor-pointer" data-sort="place">Место</th>
+                  <th class="text-left py-2 px-3 cursor-pointer" data-sort="name">Участник</th>
+                  <th class="text-left py-2 px-3 cursor-pointer" data-sort="level">Уровень</th>
+                  <th class="text-left py-2 px-3 cursor-pointer" data-sort="xp">Опыт</th>
+                  <th class="text-left py-2 px-3 cursor-pointer" data-sort="achievements">Достижения</th>
+                </tr>
+              </thead>
+              <tbody id="leaderboard-body">
+                <!-- Первое место (Кирилл) -->
+                <tr class="border-b hover:bg-gray-50 bg-green-50 font-medium first-place">
+                  <td class="py-2 px-3">
+                    <div class="w-6 h-6 rounded-full bg-yellow-100 flex items-center justify-center">
+                      <i class="w-3 h-3 text-yellow-600" data-lucide="trophy"></i>
+                    </div>
+                  </td>
+                  <td class="py-2 px-3">Кирилл</td>
+                  <td class="py-2 px-3">15</td>
+                  <td class="py-2 px-3">7500 XP</td>
+                  <td class="py-2 px-3">35</td>
+                </tr>
+                <!-- Остальные 41 участник -->
+                <tr class="border-b hover:bg-gray-50">
+                  <td class="py-2 px-3">
+                    <div class="w-6 h-6 rounded-full bg-yellow-100 flex items-center justify-center">
+                      <i class="w-3 h-3 text-yellow-600" data-lucide="trophy"></i>
+                    </div>
+                  </td>
+                  <td class="py-2 px-3">Mr Beast</td>
+                  <td class="py-2 px-3">12</td>
+                  <td class="py-2 px-3">5432 XP</td>
+                  <td class="py-2 px-3">28</td>
+                </tr>
+                <tr class="border-b hover:bg-gray-50">
+                  <td class="py-2 px-3">
+                    <div class="w-6 h-6 rounded-full bg-yellow-100 flex items-center justify-center">
+                      <i class="w-3 h-3 text-yellow-600" data-lucide="trophy"></i>
+                    </div>
+                  </td>
+                  <td class="py-2 px-3">I show spead</td>
+                  <td class="py-2 px-3">10</td>
+                  <td class="py-2 px-3">4921 XP</td>
+                  <td class="py-2 px-3">25</td>
+                </tr>
+                <tr class="border-b hover:bg-gray-50">
+                  <td class="py-2 px-3">4</td>
+                  <td class="py-2 px-3">Franklin</td>
+                  <td class="py-2 px-3">9</td>
+                  <td class="py-2 px-3">4568 XP</td>
+                  <td class="py-2 px-3">22</td>
+                </tr>
+                <tr class="border-b hover:bg-gray-50">
+                  <td class="py-2 px-3">5</td>
+                  <td class="py-2 px-3">Trevor</td>
+                  <td class="py-2 px-3">8</td>
+                  <td class="py-2 px-3">4321 XP</td>
+                  <td class="py-2 px-3">20</td>
+                </tr>
+                <tr class="border-b hover:bg-gray-50">
+                  <td class="py-2 px-3">6</td>
+                  <td class="py-2 px-3">Karl</td>
+                  <td class="py-2 px-3">7</td>
+                  <td class="py-2 px-3">4100 XP</td>
+                  <td class="py-2 px-3">18</td>
+                </tr>
+                <tr class="border-b hover:bg-gray-50">
+                  <td class="py-2 px-3">7</td>
+                  <td class="py-2 px-3">Максим Николаевич</td>
+                  <td class="py-2 px-3">7</td>
+                  <td class="py-2 px-3">3950 XP</td>
+                  <td class="py-2 px-3">17</td>
+                </tr>
+                <tr class="border-b hover:bg-gray-50">
+                  <td class="py-2 px-3">8</td>
+                  <td class="py-2 px-3">Сергей Викторович</td>
+                  <td class="py-2 px-3">6</td>
+                  <td class="py-2 px-3">3800 XP</td>
+                  <td class="py-2 px-3">16</td>
+                </tr>
+                <tr class="border-b hover:bg-gray-50">
+                  <td class="py-2 px-3">9</td>
+                  <td class="py-2 px-3">Лев Глебович</td>
+                  <td class="py-2 px-3">6</td>
+                  <td class="py-2 px-3">3600 XP</td>
+                  <td class="py-2 px-3">15</td>
+                </tr>
+                <tr class="border-b hover:bg-gray-50">
+                  <td class="py-2 px-3">10</td>
+                  <td class="py-2 px-3">Екатерина</td>
+                  <td class="py-2 px-3">5</td>
+                  <td class="py-2 px-3">3400 XP</td>
+                  <td class="py-2 px-3">14</td>
+                </tr>
+                <tr class="border-b hover:bg-gray-50">
+                  <td class="py-2 px-3">11</td>
+                  <td class="py-2 px-3">Александр</td>
+                  <td class="py-2 px-3">5</td>
+                  <td class="py-2 px-3">3200 XP</td>
+                  <td class="py-2 px-3">13</td>
+                </tr>
+                <tr class="border-b hover:bg-gray-50">
+                  <td class="py-2 px-3">12</td>
+                  <td class="py-2 px-3">Татьяна</td>
+                  <td class="py-2 px-3">5</td>
+                  <td class="py-2 px-3">3100 XP</td>
+                  <td class="py-2 px-3">12</td>
+                </tr>
+                <tr class="border-b hover:bg-gray-50">
+                  <td class="py-2 px-3">13</td>
+                  <td class="py-2 px-3">Михаил</td>
+                  <td class="py-2 px-3">4</td>
+                  <td class="py-2 px-3">2900 XP</td>
+                  <td class="py-2 px-3">11</td>
+                </tr>
+                <tr class="border-b hover:bg-gray-50">
+                  <td class="py-2 px-3">14</td>
+                  <td class="py-2 px-3">Юлия</td>
+                  <td class="py-2 px-3">4</td>
+                  <td class="py-2 px-3">2800 XP</td>
+                  <td class="py-2 px-3">10</td>
+                </tr>
+                <tr class="border-b hover:bg-gray-50">
+                  <td class="py-2 px-3">15</td>
+                  <td class="py-2 px-3">Владимир</td>
+                  <td class="py-2 px-3">4</td>
+                  <td class="py-2 px-3">2700 XP</td>
+                  <td class="py-2 px-3">9</td>
+                </tr>
+                <tr class="border-b hover:bg-gray-50">
+                  <td class="py-2 px-3">16</td>
+                  <td class="py-2 px-3">Наталья</td>
+                  <td class="py-2 px-3">3</td>
+                  <td class="py-2 px-3">2600 XP</td>
+                  <td class="py-2 px-3">8</td>
+                </tr>
+                <tr class="border-b hover:bg-gray-50">
+                  <td class="py-2 px-3">17</td>
+                  <td class="py-2 px-3">Павел</td>
+                  <td class="py-2 px-3">3</td>
+                  <td class="py-2 px-3">2500 XP</td>
+                  <td class="py-2 px-3">7</td>
+                </tr>
+                <tr class="border-b hover:bg-gray-50">
+                  <td class="py-2 px-3">18</td>
+                  <td class="py-2 px-3">Светлана</td>
+                  <td class="py-2 px-3">3</td>
+                  <td class="py-2 px-3">2400 XP</td>
+                  <td class="py-2 px-3">7</td>
+                </tr>
+                <tr class="border-b hover:bg-gray-50">
+                  <td class="py-2 px-3">19</td>
+                  <td class="py-2 px-3">Артем</td>
+                  <td class="py-2 px-3">3</td>
+                  <td class="py-2 px-3">2300 XP</td>
+                  <td class="py-2 px-3">6</td>
+                </tr>
+                <tr class="border-b hover:bg-gray-50">
+                  <td class="py-2 px-3">20</td>
+                  <td class="py-2 px-3">Ирина</td>
+                  <td class="py-2 px-3">3</td>
+                  <td class="py-2 px-3">2200 XP</td>
+                  <td class="py-2 px-3">6</td>
+                </tr>
+                <tr class="border-b hover:bg-gray-50">
+                  <td class="py-2 px-3">21</td>
+                  <td class="py-2 px-3">Роман</td>
+                  <td class="py-2 px-3">2</td>
+                  <td class="py-2 px-3">2100 XP</td>
+                  <td class="py-2 px-3">5</td>
+                </tr>
+                <tr class="border-b hover:bg-gray-50">
+                  <td class="py-2 px-3">22</td>
+                  <td class="py-2 px-3">Анна</td>
+                  <td class="py-2 px-3">2</td>
+                  <td class="py-2 px-3">2000 XP</td>
+                  <td class="py-2 px-3">5</td>
+                </tr>
+                <tr class="border-b hover:bg-gray-50">
+                  <td class="py-2 px-3">23</td>
+                  <td class="py-2 px-3">Виктор</td>
+                  <td class="py-2 px-3">2</td>
+                  <td class="py-2 px-3">1900 XP</td>
+                  <td class="py-2 px-3">4</td>
+                </tr>
+                <tr class="border-b hover:bg-gray-50">
+                  <td class="py-2 px-3">24</td>
+                  <td class="py-2 px-3">Ксения</td>
+                  <td class="py-2 px-3">2</td>
+                  <td class="py-2 px-3">1800 XP</td>
+                  <td class="py-2 px-3">4</td>
+                </tr>
+                <tr class="border-b hover:bg-gray-50">
+                  <td class="py-2 px-3">25</td>
+                  <td class="py-2 px-3">Максим</td>
+                  <td class="py-2 px-3">2</td>
+                  <td class="py-2 px-3">1700 XP</td>
+                  <td class="py-2 px-3">4</td>
+                </tr>
+                <tr class="border-b hover:bg-gray-50">
+                  <td class="py-2 px-3">26</td>
+                  <td class="py-2 px-3">Алина</td>
+                  <td class="py-2 px-3">2</td>
+                  <td class="py-2 px-3">1600 XP</td>
+                  <td class="py-2 px-3">3</td>
+                </tr>
+                <tr class="border-b hover:bg-gray-50">
+                  <td class="py-2 px-3">27</td>
+                  <td class="py-2 px-3">Николай</td>
+                  <td class="py-2 px-3">2</td>
+                  <td class="py-2 px-3">1500 XP</td>
+                  <td class="py-2 px-3">3</td>
+                </tr>
+                <tr class="border-b hover:bg-gray-50">
+                  <td class="py-2 px-3">28</td>
+                  <td class="py-2 px-3">Валерия</td>
+                  <td class="py-2 px-3">2</td>
+                  <td class="py-2 px-3">1400 XP</td>
+                  <td class="py-2 px-3">3</td>
+                </tr>
+                <tr class="border-b hover:bg-gray-50">
+                  <td class="py-2 px-3">29</td>
+                  <td class="py-2 px-3">Егор</td>
+                  <td class="py-2 px-3">1</td>
+                  <td class="py-2 px-3">1300 XP</td>
+                  <td class="py-2 px-3">2</td>
+                </tr>
+                <tr class="border-b hover:bg-gray-50">
+                  <td class="py-2 px-3">30</td>
+                  <td class="py-2 px-3">Дарья</td>
+                  <td class="py-2 px-3">1</td>
+                  <td class="py-2 px-3">1200 XP</td>
+                  <td class="py-2 px-3">2</td>
+                </tr>
+                <tr class="border-b hover:bg-gray-50">
+                  <td class="py-2 px-3">31</td>
+                  <td class="py-2 px-3">Илья</td>
+                  <td class="py-2 px-3">1</td>
+                  <td class="py-2 px-3">1100 XP</td>
+                  <td class="py-2 px-3">2</td>
+                </tr>
+                <tr class="border-b hover:bg-gray-50">
+                  <td class="py-2 px-3">32</td>
+                  <td class="py-2 px-3">Марина</td>
+                  <td class="py-2 px-3">1</td>
+                  <td class="py-2 px-3">1000 XP</td>
+                  <td class="py-2 px-3">2</td>
+                </tr>
+                <tr class="border-b hover:bg-gray-50">
+                  <td class="py-2 px-3">33</td>
+                  <td class="py-2 px-3">Станислав</td>
+                  <td class="py-2 px-3">1</td>
+                  <td class="py-2 px-3">900 XP</td>
+                  <td class="py-2 px-3">1</td>
+                </tr>
+                <tr class="border-b hover:bg-gray-50">
+                  <td class="py-2 px-3">34</td>
+                  <td class="py-2 px-3">Вероника</td>
+                  <td class="py-2 px-3">1</td>
+                  <td class="py-2 px-3">850 XP</td>
+                  <td class="py-2 px-3">1</td>
+                </tr>
+                <tr class="border-b hover:bg-gray-50">
+                  <td class="py-2 px-3">35</td>
+                  <td class="py-2 px-3">Глеб</td>
+                  <td class="py-2 px-3">1</td>
+                  <td class="py-2 px-3">800 XP</td>
+                  <td class="py-2 px-3">1</td>
+                </tr>
+                <tr class="border-b hover:bg-gray-50">
+                  <td class="py-2 px-3">36</td>
+                  <td class="py-2 px-3">София</td>
+                  <td class="py-2 px-3">1</td>
+                  <td class="py-2 px-3">750 XP</td>
+                  <td class="py-2 px-3">1</td>
+                </tr>
+                <tr class="border-b hover:bg-gray-50">
+                  <td class="py-2 px-3">37</td>
+                  <td class="py-2 px-3">Тимофей</td>
+                  <td class="py-2 px-3">1</td>
+                  <td class="py-2 px-3">700 XP</td>
+                  <td class="py-2 px-3">1</td>
+                </tr>
+                <tr class="border-b hover:bg-gray-50">
+                  <td class="py-2 px-3">38</td>
+                  <td class="py-2 px-3">Елизавета</td>
+                  <td class="py-2 px-3">1</td>
+                  <td class="py-2 px-3">650 XP</td>
+                  <td class="py-2 px-3">1</td>
+                </tr>
+                <tr class="border-b hover:bg-gray-50">
+                  <td class="py-2 px-3">39</td>
+                  <td class="py-2 px-3">Лев</td>
+                  <td class="py-2 px-3">1</td>
+                  <td class="py-2 px-3">600 XP</td>
+                  <td class="py-2 px-3">1</td>
+                </tr>
+                <tr class="border-b hover:bg-gray-50">
+                  <td class="py-2 px-3">40</td>
+                  <td class="py-2 px-3">Полина</td>
+                  <td class="py-2 px-3">1</td>
+                  <td class="py-2 px-3">550 XP</td>
+                  <td class="py-2 px-3">1</td>
+                </tr>
+                <tr class="border-b hover:bg-gray-50">
+                  <td class="py-2 px-3">41</td>
+                  <td class="py-2 px-3">Даниил</td>
+                  <td class="py-2 px-3">1</td>
+                  <td class="py-2 px-3">500 XP</td>
+                  <td class="py-2 px-3">1</td>
+                </tr>
+                <tr class="border-b hover:bg-gray-50">
+                  <td class="py-2 px-3">42</td>
+                  <td class="py-2 px-3">Варвара</td>
+                  <td class="py-2 px-3">1</td>
+                  <td class="py-2 px-3">450 XP</td>
+                  <td class="py-2 px-3">1</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <div class="fixed bottom-0 left-0 right-0 z-20 md:hidden">
+    <div class="flex items-center justify-around p-2 bg-white border-t">
+      <a href="challenges.html" class="p-2 rounded-lg text-gray-700">
+        <i data-lucide="leaf"></i>
+      </a>
+      <a href="ranks.html" class="p-2 rounded-lg text-green-800 bg-green-100">
+        <i data-lucide="award"></i>
+      </a>
+      <a href="transport.html" class="p-2 rounded-lg text-gray-700">
+        <i data-lucide="car"></i>
+      </a>
+      <a href="index.html" class="p-2 rounded-lg text-gray-700">
+        <i data-lucide="bar-chart"></i>
+      </a>
+      <a href="index.html#profile" class="p-2 rounded-lg text-gray-700">
+        <i data-lucide="user"></i>
+      </a>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
